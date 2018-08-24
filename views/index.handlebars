@@ -1,7 +1,7 @@
 <img src="/assets/img/burger.png" width="200px" id="burger-img">
 <h1>Eat-Da-Burger!</h1>
 
-<h2>These burgers are not yet devoured</h2>
+<h2>These burgers are not yet eaten</h2>
 <ul>
   {{#each burgers}}
     {{#unless devoured}}
@@ -10,7 +10,7 @@
   {{/each}}
 </ul>
 
-<h2>These burgers have been devoured</h2>
+<h2>These burgers have been eaten</h2>
 <ul>
   {{#each burgers}}
     {{#if devoured}}
