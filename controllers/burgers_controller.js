@@ -1,49 +1,37 @@
-//bring in dependencies
 var express = require("express");
+
 var router = express.Router();
+
 var burger = require("../models/burger.js");
 
-
-//Routes and rendering
-////////////////////////////////////////////////
-
-//get route for home
-router.get("/", function (req, res) {
-    burger.all(function (data) {
-        var hbsObject = {
+router.get("/", function(request, response){
+    burger.selectAll(function(data){
+        var handlebarsObject = {
             burgers: data
         };
-        console.log(hbsObject);
-
-        //render items here
-        res.render("index", hbsObject);
+        response.render("index", handlebarsObject);
     });
 });
 
-//update the burger status to devoured
-router.put("/api/burgers/:id", function (req, res) {
-    var condition = "id = " + req.params.id;
-    console.log('req: ' + req.body.eaten);
-    var newValue = req.body.eaten;
-   
-   burger.update(condition, newValue, function (result) {
-        if (result.changedRows == 0) {
-            return res.status(404).end();
-        } else {
-            res.status(200).end();
+router.post("/api/burgers", function(request, response){
+    burger.insertOne(["burger_name"], [request.body.name], function(result){
+        response.json({id: result.insertId});
+    });
+});
+
+router.put("/api/burgers/:id", function(request, response){
+    var condition = "id = " + request.params.id;
+
+    burger.updateOne({
+        devoured: request.body.devoured
+    }, condition, function(result){
+        if(result.changedRows == 0){
+            return response.status(404).end();
+        }
+        else{
+            response.status(200).end();
         }
     });
-
 });
 
-//create a new burger and add it to the ready to be eaten list
-router.post("/api/burgers", function(req, res) {
-    var burgerName = req.body.name;
-
-    burger.create(burgerName, function (result) {
-        res.json({id: result.insertId});
-    })
-});
-
-//Export routes for server.js
 module.exports = router;

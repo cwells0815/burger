@@ -1,26 +1,33 @@
 {
-  "name": "burgers",
+  "name": "eat-da-burger",
   "version": "1.0.0",
-  "description": "Simple burger app with MVC and ORM structure",
+  "description": "A restaurant app that lets users input the names of burgers they'd like to eat.",
   "main": "server.js",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "express-handlebars": "^3.0.0",
+    "mysql": "^2.16.0"
+  },
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cwells0815/burgers.git"
+    "url": "git+https://github.com/cwells0815/Eat-Da-Burger.git"
   },
+  "keywords": [
+    "Node",
+    "Handlebars",
+    "Express",
+    "MySql"
+  ],
   "author": "Nicholas Wells",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/cwells0815/burgers/issues"
+    "url": "https://github.com/cwells0815/Eat-Da-Burger/issues"
   },
-  "homepage": "https://github.com/cwells0815/burgers#readme",
-  "dependencies": {
-    "body-parser": "^1.18.3",
-    "express": "^4.16.3",
-    "express-handlebars": "^3.0.0",
-    "mysql": "^2.16.0"
-  }
+  "homepage": "https://github.com/cwells0815/Eat-Da-Burger#readme"
 }

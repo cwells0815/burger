@@ -1,29 +1,26 @@
-//dependencies
 var express = require("express");
 var bodyParser = require("body-parser");
-var exphbs = require("express-handlebars");
 
-//set up express
-var app = express();
-
-//set up port
 var PORT = process.env.PORT || 8080;
+
+var app = express();
 
 app.use(express.static("public"));
 
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
+var expressHandlebars = require("express-handlebars");
 
-//handlebars
-app.engine("handlebars", exphbs({defaultLayout: "main"}));
+app.engine("handlebars", expressHandlebars({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-//pull in routes
 var routes = require("./controllers/burgers_controller.js");
 
-app.use(routes); //This does not work.
+app.use(routes);
 
-///start server listening
+// Start our server so that it can begin listening to client requests.
 app.listen(PORT, function() {
-    console.log("Server listeninig on PORT: http://localhost" + PORT);
+    // Log (server-side) when our server has started
+    console.log("Server listening on: http://localhost:" + PORT);
 });
