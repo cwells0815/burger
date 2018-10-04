@@ -1,33 +1,26 @@
 {
-  "name": "burger",
+  "name": "burgers",
   "version": "1.0.0",
-  "description": "A restaurant app that lets users input the names of burgers they'd like to eat.",
+  "description": "Simple burger app with MVC and ORM structure",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cwells0815/burger.git"
+    "url": "git+https://github.com/cwells0815/burgers.git"
   },
-  "keywords": [
-    "MySql",
-    "Node",
-    "Express",
-    "Handlebars"
-  ],
   "author": "Nicholas Wells",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/cwells0815/burger/issues"
+    "url": "https://github.com/cwells0815/burgers/issues"
   },
-  "homepage": "https://github.com/cwells0815/burger#readme",
+  "homepage": "https://github.com/cwells0815/burgers#readme",
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
     "express-handlebars": "^3.0.0",
-    "handlebars": "^4.0.12",
-    "mysql": "^2.16.0",
-    "sequelize": "^4.39.0"
+    "mysql": "^2.16.0"
   }
 }

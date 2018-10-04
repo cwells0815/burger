@@ -1,32 +1,94 @@
-<img src="/assets/img/burger.png" width="200px" id="burger-img">
-<h1>Eat-Da-Burger!</h1>
+<div id="wrapper">
+    <div id="content">
 
-<h2>These burgers are not yet eaten</h2>
-<ul>
-  {{#each burgers}}
-    {{#unless devoured}}
-      {{> burgers/undevoured-block devoured=true}}
-    {{/unless}}
-  {{/each}}
-</ul>
+        <img id="logo" src="/assets/images/burger.png" alt="burger picture">
+        <h1 id="burger-head">Burger Dive!</h1>
+        <div id="table-box">
+            <div id="available-burgers" class="burger-display">
+                <h2 class="table-heading">Burgers Ready to Eat</h2>
+                <ul>
+                    {{#each burgers}} {{#unless devoured}}
+                    <li>
+                        <p class="burger-name-block">{{burger_name}} <button class="eat-button" data-id="{{this.id}}">Eat
+                                Burger!</button></p>
+                    </li>
+                    {{/unless}} {{/each}}
+                </ul>
+            </div>
 
-<h2>These burgers have been eaten</h2>
-<ul>
-  {{#each burgers}}
-    {{#if devoured}}
-      {{> burgers/devoured-block}}
-    {{/if}}
-  {{/each}}
-</ul>
+            <div id="eaten-burgers" class="burger-display">
+                <h2 class="table-heading">Devoured Burgers</h2>
+                <ul>
+                    {{#each burgers}} {{#if devoured}}
+                    <li>
+                        <p class="burger-name-block">{{burger_name}}</p>
+                    </li>
+                    {{/if}} {{/each}}
+                </ul>
+            </div>
+        </div>
 
-<h2>Add a burger</h2>
-<form class="create-form">
+        <h2 id="order-burger-header">Order a Burger</h2>
+        <form id="burger-form">
+            <label id="burger-label">Burger Name</label><input type="text" id="new-burger-name" name="burgerName"><br>
+            <button id="order-burger-button" type="submit">Order a New Burger!</button>
+        </form>
 
-  <div class="form-group">
-    <input type="text" id="new-burger" name="name">
-  </div>
+    </div>
+</div>
 
-  <button type="submit" id="submit-button">Submit</button>
+<div id="enter-a-burger">
+    <p>That burger seems kind of boring. Please enter a name for your burger...</p><br>
+    <button id="close-button">Close</button>
+</div>
 
-  <p>Enter a burger you want to name, and then click Submit</p>
-</form>
+<script>
+
+    //function to move burger from ready to be eaten to eaten when clicked
+    $(".eat-button").on("click", function (event) {
+        event.preventDefault();
+        var id = $(this).data("id");
+        var devoured = {
+            eaten: true
+        };
+
+
+        //Send PUT request using AJAX
+        $.ajax("/api/burgers/" + id, {
+            type: "PUT",
+            data: devoured
+        }).then(function () {
+            console.log("burger eaten");
+            location.reload();
+        });
+
+    });// end update function
+
+    //function to add a burger
+    $("#burger-form").on('submit', function (event) {
+        event.preventDefault();
+        var newBurger = {
+            name: $("#new-burger-name").val()
+        }
+        console.log($("#new-burger-name").val());
+        if ($("#new-burger-name").val() == "") {
+            $('#enter-a-burger').show();
+        } else {
+            console.log('here');
+            $.ajax("/api/burgers", {
+                type: "POST",
+                data: newBurger
+            }).then(function () {
+                console.log('New burger ordered.');
+                location.reload();
+            });
+        } //end else statement
+    }); //end create new burger function
+
+    $("#close-button").on('click', function (event) {
+        event.preventDefault();
+        $("#enter-a-burger").hide();
+    });
+
+
+</script>

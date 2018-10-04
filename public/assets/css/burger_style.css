@@ -1,0 +1,165 @@
+
+body {
+    color: rgb(32, 26, 30);
+    text-shadow: 1px 1px rgb(192, 192, 192);
+    background-color: #A8EDEA;
+
+    background-image: radial-gradient(circle, #FED6E3, #A8EDEA);
+
+}
+
+#wrapper {
+    position: absolute;
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+#content {
+    width: 80%;
+    margin: 2% auto 2% auto;
+    position: relative;
+}
+
+#logo {
+    display: block;
+    position: relative;
+    width: 40%;
+    margin: 2% auto 2% auto;
+    box-shadow: 2px 2px 2px #41337A;
+}
+
+#burger-head {
+    width: 80%;
+    position: relative;
+    text-align: center;
+    margin: 0 auto 2% auto;
+}
+
+#table-box {
+    display: flex;
+    flex-wrap: nowrap;
+    position: relative;
+    min-width: 100%;
+
+}
+
+.burger-display {
+    display: block;
+    width: 45%;
+    position: relative;
+    border: 2px solid #B12727;
+    background-color: #053f8b;
+    padding-bottom: 10px;
+    box-shadow: 2px 2px 2px #41337A;
+}
+
+.burger-display ul {
+    margin: 0;
+    padding: 0;
+}
+
+.table-heading {
+    color: #FFC53A;
+    text-shadow: 1px 1px black;
+}
+
+.burger-display ul li {
+    position: relative;
+    width: 80%;
+    margin: 3% auto;
+    font-size: 20px;
+    text-shadow: none;
+    list-style-type: none;
+    border: 1px solid #32292F;
+    padding: 5px 5%;
+    background-color: rgb(219, 210, 188);
+    text-align: center;
+    box-shadow: 2px 2px 2px #41337A;
+}
+
+p {
+    margin: 10px;
+}
+
+.eat-button, #order-burger-button {
+    background-color: #41337A;
+    border: 1px solid #B12727;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px #41337A;
+    color: rgb(247, 195, 26);
+    font-size: 18px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+
+
+#available-burgers {
+    float: left;
+}
+
+#eaten-burgers {
+    float: right;
+    margin-left: 10%;
+}
+
+.table-heading {
+    text-align: center;
+    margin: 5px auto 5px auto;
+}
+
+#order-burger-header {
+    text-align: center;
+    margin: 20px auto;
+    clear: both;
+}
+
+#burger-form {
+    width: 50%;
+    clear: both;
+    margin: 2% auto 2% auto;
+    text-align: center;
+    font-size: 20px;
+}
+
+#new-burger-name {
+    font-size: 20px;
+}
+
+#burger-label {
+    margin: auto 5px 10px 5px;
+}
+
+#order-burger-button {
+    position: relative;
+    display: block;
+    margin: 10px auto 10px auto;
+}
+
+#enter-a-burger {
+    display: none;
+    width: 50%;
+    height: 50vh;
+    position: fixed;
+    top: 25%;
+    left: 25%;
+    z-index: 2;
+    padding: 20px 10px 10px 10px;
+    font-size: 30px;
+    text-align: center;
+    color: black;
+    border: 2px solid red;
+    background-color: rgb(177, 177, 177);
+}
+
+#enter-a-burger #close-button {
+    margin: 5px auto;
+}
+
+
+
+
+
